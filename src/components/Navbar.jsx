@@ -8,7 +8,7 @@ export default function Navbar({ onOpenBooking }) {
     <header className="sticky top-0 z-40 w-full bg-slate-950/95 backdrop-blur-md border-b border-sky-500/20 shadow-2xl">
       {/* Top Emergency Alert Bar */}
       <div className="gradient-emergency text-white text-xs sm:text-sm py-2 px-4 shadow-lg">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+        <div className="max-w-full mx-auto flex flex-wrap justify-between items-center gap-2">
           <div className="flex flex-wrap items-center gap-4">
             <span className="flex items-center gap-1.5 font-black uppercase tracking-wide">
               <Siren className="w-4 h-4 animate-bounce" />
@@ -44,7 +44,7 @@ export default function Navbar({ onOpenBooking }) {
           <img
             src="/phlogo.png"
             alt="Priya Hospital Logo"
-            className="h-11 w-auto object-contain rounded-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform bg-white/10 p-1 border border-white/10"
+            className="h-20 w-auto object-contain group-hover:scale-105 transition-transform"
           />
           <div>
             <div className="flex items-center gap-2">

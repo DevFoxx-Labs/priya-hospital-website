@@ -18,7 +18,7 @@ export default function Footer({ onOpenBooking }) {
               <img
                 src="/phlogo.png"
                 alt="Priya Hospital Logo"
-                className="h-10 w-auto object-contain rounded-lg bg-white/10 p-1 border border-white/10 shadow-md"
+                className="h-20 w-auto object-contain"
               />
               <div>
                 <span className="text-2xl font-black text-white tracking-tight">PRIYA HOSPITAL</span>
