@@ -71,7 +71,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
             <div className="gradient-emergency p-6 text-white flex items-center justify-between">
               <div className="space-y-1">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/20 text-xs font-black backdrop-blur-xs">
-                  <HeartPulse className="w-3.5 h-3.5 fill-white" /> PRIYA HOSPITAL JHALWA
+                  <img src="/phlogo.png" alt="Priya Hospital Logo" className="w-4 h-4 object-contain rounded-full bg-white/20 p-0.5" /> PRIYA HOSPITAL JHALWA
                 </div>
                 <h3 className="text-xl sm:text-2xl font-black">Book Doctor Consultation / Entry</h3>
               </div>

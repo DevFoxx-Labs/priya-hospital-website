@@ -41,9 +41,11 @@ export default function Navbar({ onOpenBooking }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-red-600 to-sky-600 flex items-center justify-center text-white font-black shadow-lg shadow-red-500/30 group-hover:scale-105 transition-transform">
-            <HeartPulse className="w-6 h-6 animate-pulse" />
-          </div>
+          <img
+            src="/phlogo.png"
+            alt="Priya Hospital Logo"
+            className="h-11 w-auto object-contain rounded-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform bg-white/10 p-1 border border-white/10"
+          />
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xl sm:text-2xl font-black text-white tracking-tight">PRIYA HOSPITAL</span>

@@ -15,9 +15,11 @@ export default function Footer({ onOpenBooking }) {
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-sky-600 flex items-center justify-center text-white font-black shadow-md">
-                <HeartPulse className="w-6 h-6 animate-pulse" />
-              </div>
+              <img
+                src="/phlogo.png"
+                alt="Priya Hospital Logo"
+                className="h-10 w-auto object-contain rounded-lg bg-white/10 p-1 border border-white/10 shadow-md"
+              />
               <div>
                 <span className="text-2xl font-black text-white tracking-tight">PRIYA HOSPITAL</span>
                 <span className="ml-1 text-xs font-black px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/40">24/7</span>
