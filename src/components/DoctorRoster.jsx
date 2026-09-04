@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Stethoscope, Clock, Calendar, CheckCircle2, UserCheck, ShieldCheck, Search, Filter } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function DoctorRoster({ onOpenBooking }) {
   const [selectedSpecialty, setSelectedSpecialty] = useState('All');
@@ -138,7 +139,13 @@ export default function DoctorRoster({ onOpenBooking }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-xs font-extrabold uppercase tracking-wider border border-sky-500/30">
             Official Consultant Doctor Panel
           </div>
@@ -165,52 +172,61 @@ export default function DoctorRoster({ onOpenBooking }) {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Doctor Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {filteredDoctors.map((doc, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-3xl bg-slate-900 border border-slate-800 hover:border-sky-500/50 transition-all duration-300 space-y-5 text-left flex flex-col justify-between shadow-xl"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 text-[11px] font-extrabold border border-sky-500/30">
-                    {doc.degrees}
-                  </span>
-                  <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> {doc.available}
-                  </span>
+        {/* Doctor Grid with AnimatePresence */}
+        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <AnimatePresence mode="popLayout">
+            {filteredDoctors.map((doc) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ y: -6 }}
+                key={doc.name}
+                className="p-6 rounded-3xl bg-slate-900 border border-slate-800 hover:border-sky-500/50 transition-all duration-300 space-y-5 text-left flex flex-col justify-between shadow-xl"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-400 text-[11px] font-extrabold border border-sky-500/30">
+                      {doc.degrees}
+                    </span>
+                    <span className="text-[11px] font-bold text-emerald-400 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" /> {doc.available}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-black text-white">{doc.name}</h3>
+                    <p className="text-xs font-extrabold text-amber-400 mt-0.5">{doc.nameHindi}</p>
+                  </div>
+
+                  <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 space-y-1">
+                    <div className="text-xs font-bold text-sky-300">{doc.specialty}</div>
+                    <div className="text-[11px] font-semibold text-slate-400">{doc.specialtyHindi}</div>
+                  </div>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-black text-white">{doc.name}</h3>
-                  <p className="text-xs font-extrabold text-amber-400 mt-0.5">{doc.nameHindi}</p>
-                </div>
+                <div className="pt-4 border-t border-slate-800 space-y-3">
+                  <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold">
+                    <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>OPD Time: <strong>{doc.timings}</strong></span>
+                  </div>
 
-                <div className="p-3 rounded-2xl bg-slate-950 border border-slate-800 space-y-1">
-                  <div className="text-xs font-bold text-sky-300">{doc.specialty}</div>
-                  <div className="text-[11px] font-semibold text-slate-400">{doc.specialtyHindi}</div>
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    onClick={onOpenBooking}
+                    className="w-full py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-xs shadow-md transition-colors cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <Calendar className="w-3.5 h-3.5" /> Book Consultation Slot
+                  </motion.button>
                 </div>
-              </div>
-
-              <div className="pt-4 border-t border-slate-800 space-y-3">
-                <div className="flex items-center gap-2 text-xs text-slate-300 font-semibold">
-                  <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>OPD Time: <strong>{doc.timings}</strong></span>
-                </div>
-
-                <button
-                  onClick={onOpenBooking}
-                  className="w-full py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-xs shadow-md transition-colors cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <Calendar className="w-3.5 h-3.5" /> Book Consultation Slot
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
       </div>
     </section>

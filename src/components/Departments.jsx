@@ -1,5 +1,6 @@
 import React from 'react';
 import { Siren, Activity, Heart, Stethoscope, ChevronRight, Check, ShieldCheck, Sparkles, Zap, Pill } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Departments({ onOpenBooking }) {
   const departments = [
@@ -66,7 +67,13 @@ export default function Departments({ onOpenBooking }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-xs font-extrabold uppercase tracking-wider border border-sky-500/30">
             Multispeciality Medical Infrastructure
           </div>
@@ -76,13 +83,18 @@ export default function Departments({ onOpenBooking }) {
           <p className="text-slate-400 text-base sm:text-lg">
             Providing round-the-clock emergency resuscitation, advanced surgeries, and compassionate patient care in Jhalwa.
           </p>
-        </div>
+        </motion.div>
 
         {/* Departments Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
           {departments.map((dept, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               className="card-hospital-3d p-6 rounded-3xl space-y-5 flex flex-col justify-between group cursor-pointer"
             >
               <div className="space-y-4">
@@ -119,12 +131,18 @@ export default function Departments({ onOpenBooking }) {
                   <span>Book Consultation</span> <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Emergency Callout Banner */}
-        <div className="mt-14 p-8 rounded-3xl gradient-emergency text-white shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-14 p-8 rounded-3xl gradient-emergency text-white shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+        >
           <div className="space-y-2 text-center md:text-left">
             <h3 className="text-2xl sm:text-3xl font-black tracking-tight flex items-center gap-2 justify-center md:justify-start">
               <Siren className="w-7 h-7 text-white animate-bounce" /> Medical Emergency or Trauma Case in Prayagraj?
@@ -133,13 +151,15 @@ export default function Departments({ onOpenBooking }) {
               Call Priya Hospital 24/7 Casualty & Emergency Helpline immediately: +91 80098 03730. Instant doctor & ICU admission.
             </p>
           </div>
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href="tel:+918009803730"
-            className="px-7 py-4 rounded-2xl bg-slate-950 hover:bg-slate-900 text-white font-black shadow-xl text-sm shrink-0 transition-transform hover:scale-105 border border-red-500/40"
+            className="px-7 py-4 rounded-2xl bg-slate-950 hover:bg-slate-900 text-white font-black shadow-xl text-sm shrink-0 transition-transform border border-red-500/40"
           >
             Call Emergency: 080098 03730
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
       </div>
     </section>

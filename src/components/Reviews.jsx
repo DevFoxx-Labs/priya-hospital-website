@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, Quote, ExternalLink, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Reviews() {
   const reviews = [
@@ -45,8 +46,14 @@ export default function Reviews() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-slate-800 pb-12">
-          <div className="space-y-4 max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-slate-800 pb-12"
+        >
+          <div className="space-y-4 max-w-2xl text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-extrabold uppercase tracking-wider border border-amber-500/30">
               Verified Google Patient Feedback
             </div>
@@ -68,7 +75,7 @@ export default function Reviews() {
                 ))}
               </div>
             </div>
-            <div className="border-l border-slate-800 pl-6 space-y-1">
+            <div className="border-l border-slate-800 pl-6 space-y-1 text-left">
               <div className="font-bold text-white text-base">Google Review Summary</div>
               <div className="text-xs text-slate-400 font-medium">Based on 30 Verified Hospital Ratings</div>
               <div className="inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold">
@@ -76,14 +83,19 @@ export default function Reviews() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Reviews Grid */}
         <div className="grid md:grid-cols-2 gap-8 mt-12">
           {reviews.map((rev, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="p-8 rounded-3xl bg-slate-900/70 border border-slate-800 hover:border-sky-500/50 transition-all duration-300 space-y-6 flex flex-col justify-between"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -6 }}
+              className="p-8 rounded-3xl bg-slate-900/70 border border-slate-800 hover:border-sky-500/50 transition-all duration-300 space-y-6 flex flex-col justify-between text-left"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -113,13 +125,20 @@ export default function Reviews() {
                   {rev.date}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Google Reviews Link */}
-        <div className="mt-12 text-center">
-          <a
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href="https://maps.google.com/maps?q=Priya+Hospital+Jhalwa+Prayagraj+reviews"
             target="_blank"
             rel="noopener noreferrer"
@@ -127,8 +146,8 @@ export default function Reviews() {
           >
             <span>View All Google Patient Reviews</span>
             <ExternalLink className="w-4 h-4 text-sky-600" />
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
       </div>
     </section>

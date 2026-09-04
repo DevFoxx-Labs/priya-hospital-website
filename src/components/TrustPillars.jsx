@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldCheck, HeartHandshake, Sparkles, CheckCircle2, Award, Clock, DollarSign } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function TrustPillars() {
   const pillars = [
@@ -34,7 +35,13 @@ export default function TrustPillars() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-extrabold uppercase tracking-wider border border-emerald-500/30">
             Why Patients Choose Priya Hospital
           </div>
@@ -44,13 +51,18 @@ export default function TrustPillars() {
           <p className="text-slate-400 text-base sm:text-lg">
             Rated 5.0 ★ on Google by families across Jhalwa, Devprayagam Colony, and Prayagraj.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-14">
           {pillars.map((item, idx) => (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -6 }}
               className="p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-4 text-left shadow-xl hover:border-sky-500/50 transition-all"
             >
               <div className="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-2xl font-bold border border-sky-500/40">
@@ -63,7 +75,7 @@ export default function TrustPillars() {
               <p className="text-xs text-slate-300 leading-relaxed font-medium">
                 {item.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
