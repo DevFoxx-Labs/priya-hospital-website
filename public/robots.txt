@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://priyahospitaljhalwa.com/sitemap.xml
+Sitemap: https://priya-hospital-website.devfoxxlabs.com/sitemap.xml
