@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeartPulse, Phone, MapPin, Clock, Star, ArrowUp, Siren } from 'lucide-react';
+import { HeartPulse, Phone, MapPin, Clock, Star, ArrowUp, Siren, Mail, ShieldCheck } from 'lucide-react';
 
 export default function Footer({ onOpenBooking }) {
   const scrollToTop = () => {
@@ -25,13 +25,22 @@ export default function Footer({ onOpenBooking }) {
               </div>
             </div>
 
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Prayagraj's 5.0-star rated multispeciality emergency hospital providing 24/7 ICU, trauma resuscitation, general surgery, maternity OPD, and diagnostics.
+            <p className="text-amber-400 font-bold italic text-xs">
+              "स्वास्थ्य आपका साथ हमारा" — Your Health, Our Commitment
             </p>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-300">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span className="font-extrabold text-white">5.0 Star Rating</span> (30 Google Reviews)
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
+              Prayagraj's 5.0-star rated multispeciality emergency hospital providing 24/7 ICU, Ayushman Bharat PMJAY cashless treatment, Ultrasound Centre, general surgery, maternity OPD, and diagnostics.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-xs text-slate-300">
+                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                <span className="font-extrabold text-white">5.0 Star Rating</span> (30 Google Reviews)
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 font-bold">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> PMJAY & SACHIS Empanelled
+              </div>
             </div>
           </div>
 
@@ -41,6 +50,7 @@ export default function Footer({ onOpenBooking }) {
             <ul className="space-y-2 text-xs font-semibold">
               <li><a href="#about" className="hover:text-sky-400 transition-colors">About Priya Hospital</a></li>
               <li><a href="#departments" className="hover:text-sky-400 transition-colors">Specialties & ICU</a></li>
+              <li><a href="#roster" className="hover:text-sky-400 transition-colors text-sky-400">12 Doctor Panel</a></li>
               <li><a href="#triage" className="hover:text-sky-400 transition-colors">Emergency Triage</a></li>
               <li><a href="#trust" className="hover:text-sky-400 transition-colors">Clean Rooms & Care</a></li>
               <li><a href="#reviews" className="hover:text-sky-400 transition-colors">Patient Reviews (5.0 ★)</a></li>
@@ -52,10 +62,11 @@ export default function Footer({ onOpenBooking }) {
             <h4 className="text-xs font-extrabold text-slate-200 uppercase tracking-wider">Specialties</h4>
             <ul className="space-y-2 text-xs font-semibold">
               <li><span className="text-slate-400">24/7 Emergency & ICU Care</span></li>
-              <li><span className="text-slate-400">Laparoscopic Surgery OPD</span></li>
+              <li><span className="text-slate-400">Ultrasound & Diagnostic Centre</span></li>
+              <li><span className="text-slate-400">General & Laparoscopic Surgery</span></li>
               <li><span className="text-slate-400">Obstetrics & Gynecology</span></li>
-              <li><span className="text-slate-400">General Medicine & Diabetes</span></li>
-              <li><span className="text-slate-400">24/7 Pharmacy & Diagnostics</span></li>
+              <li><span className="text-slate-400">Pediatrics & Child Care</span></li>
+              <li><span className="text-slate-400">Neuro & Spine Surgery</span></li>
             </ul>
           </div>
 
@@ -72,8 +83,12 @@ export default function Footer({ onOpenBooking }) {
                 <a href="tel:+918009803730" className="text-white font-extrabold hover:underline">+91 80098 03730</a>
               </div>
               <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                <a href="mailto:priyahospital1@gmail.com" className="text-slate-300 font-bold hover:underline">priyahospital1@gmail.com</a>
+              </div>
+              <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span className="text-emerald-300 font-semibold">Open 24 Hours (7 Days)</span>
+                <span className="text-emerald-300 font-semibold">Open 24 Hours (365 Days)</span>
               </div>
             </div>
 

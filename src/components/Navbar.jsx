@@ -25,7 +25,7 @@ export default function Navbar({ onOpenBooking }) {
 
           <div className="flex items-center gap-4 text-xs font-extrabold">
             <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-black/20 text-white border border-white/20">
-              Open 24 Hours • 7 Days a Week
+              Open 24 Hours • Ayushman Bharat PMJAY Empanelled
             </span>
             <a
               href="#location"
@@ -54,14 +54,14 @@ export default function Navbar({ onOpenBooking }) {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-7 font-bold text-slate-300 text-sm">
+        <nav className="hidden lg:flex items-center gap-6 font-bold text-slate-300 text-sm">
           <a href="#about" className="hover:text-sky-400 transition-colors">About</a>
-          <a href="#departments" className="hover:text-sky-400 transition-colors">Specialties & ICU</a>
+          <a href="#departments" className="hover:text-sky-400 transition-colors">Departments</a>
+          <a href="#roster" className="hover:text-sky-400 transition-colors text-sky-400">12 Doctor Panel</a>
           <a href="#triage" className="hover:text-sky-400 transition-colors">Emergency Triage</a>
-          <a href="#trust" className="hover:text-sky-400 transition-colors">Hospital Care</a>
+          <a href="#trust" className="hover:text-sky-400 transition-colors">Clean Rooms</a>
           <a href="#reviews" className="hover:text-sky-400 transition-colors">Reviews (5.0 ★)</a>
-          <a href="#faq" className="hover:text-sky-400 transition-colors">FAQs</a>
-          <a href="#location" className="hover:text-sky-400 transition-colors">Location</a>
+          <a href="#location" className="hover:text-sky-400 transition-colors">Contact</a>
         </nav>
 
         {/* Action Button */}
@@ -98,11 +98,11 @@ export default function Navbar({ onOpenBooking }) {
         <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3 shadow-2xl">
           <div className="flex flex-col space-y-3 text-slate-300 font-bold text-base pt-2">
             <a href="#about" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800">About Priya Hospital</a>
-            <a href="#departments" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800">Departments & ICU</a>
+            <a href="#departments" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800">Specialties & ICU</a>
+            <a href="#roster" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800 text-sky-400">12 Specialist Doctor Panel & Timings</a>
             <a href="#triage" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800">Emergency Triage Assistant</a>
             <a href="#trust" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800">Clean Rooms & Facilities</a>
             <a href="#reviews" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800">Google Reviews (5.0 ★)</a>
-            <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800">FAQs</a>
             <a href="#location" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 rounded-lg hover:bg-slate-800">Location & Emergency Call</a>
           </div>
           <div className="pt-2 border-t border-slate-800 flex flex-col gap-2">

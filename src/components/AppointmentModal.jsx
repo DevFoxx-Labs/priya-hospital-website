@@ -1,22 +1,39 @@
 import React, { useState } from 'react';
-import { X, Calendar, Clock, User, Phone, CheckCircle2, MessageSquare, Siren, HeartPulse } from 'lucide-react';
+import { X, Calendar, Clock, User, Phone, CheckCircle2, MessageSquare, Siren, HeartPulse, Stethoscope } from 'lucide-react';
 
 export default function AppointmentModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const [step, setStep] = useState('form'); // 'form' | 'success'
   const [formData, setFormData] = useState({
-    bookingType: 'OPD Consultation', // 'OPD Consultation' | '24/7 Emergency Admission'
-    department: '24/7 Emergency & Critical Care ICU',
+    bookingType: 'OPD Consultation',
+    doctor: 'Dr. Arun Kumar Srivastava (Heart Disease & Physician • Daily 11:00 AM - 1:00 PM)',
+    department: 'Cardiology & General Medicine',
     date: new Date().toISOString().split('T')[0],
-    time: '10:30 AM (Morning OPD)',
+    time: '11:00 AM (OPD Slot)',
     patientName: '',
     age: '',
     phone: '',
+    ayushmanCard: 'No',
     symptoms: ''
   });
 
   const [bookingRef, setBookingRef] = useState('');
+
+  const doctorList = [
+    { name: "Dr. Arun Kumar Srivastava (MBBS, MD)", spec: "Heart Disease & Physician (Daily 11 AM - 1 PM)", dept: "Cardiology & General Medicine" },
+    { name: "Dr. Pritima Chaudhary (MS)", spec: "Obstetrician & Gynecologist (Daily 10 AM - 1 PM & 7 PM - 8:30 PM)", dept: "Obstetrics & Gynecology" },
+    { name: "Dr. Kaushlesh Dwivedi (MBBS)", spec: "General Physician (Daily 11 AM - 4 PM & 7 PM - 10 PM)", dept: "General Medicine" },
+    { name: "Dr. Anurag Srivastava (MBBS, DCH)", spec: "Pediatric & Child Specialist (Daily 1 PM - 2 PM)", dept: "Pediatrics" },
+    { name: "Dr. Ashok Kumar Singh (MBBS, MS)", spec: "General & Laparoscopic Surgeon (Daily 2 PM - 3 PM)", dept: "General & Laparoscopic Surgery" },
+    { name: "Dr. Saurabh Anand Dubey (MS, MCh)", spec: "Neuro & Spine Surgeon (Thursdays 4 PM - 5 PM)", dept: "Neuro & Spine Surgery" },
+    { name: "Dr. Devendra Singh (MS, MCh)", spec: "Neuro & Spine Specialist (Appointment)", dept: "Neuro & Spine Surgery" },
+    { name: "Dr. Ritu Babeja (MBBS, DGO)", spec: "Gynecologist & Obstetrician (Daily OPD)", dept: "Obstetrics & Gynecology" },
+    { name: "Dr. Swati Srivastava (DGO)", spec: "Gynecologist & Obstetrician (Daily OPD)", dept: "Obstetrics & Gynecology" },
+    { name: "Dr. Sachin Singh (MS)", spec: "Orthopedics, Bone & Joint Specialist (Daily Evening)", dept: "Orthopedics & Joint Care" },
+    { name: "Dr. Abhishek Shukla (MBBS, MCh)", spec: "Urologist & Kidney Specialist (Appointment)", dept: "Urology & Nephrology" },
+    { name: "Dr. Rakesh Paswan (MD)", spec: "Neuro & Psychiatric Specialist (Appointment)", dept: "Neuropsychiatry" }
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +43,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Priya Hospital Jhalwa, I would like to confirm an appointment.\nRef: ${bookingRef}\nType: ${formData.bookingType}\nPatient: ${formData.patientName} (${formData.age} yrs)\nDept: ${formData.department}\nDate: ${formData.date} at ${formData.time}\nPhone: ${formData.phone}`
+    `Hello Priya Hospital Jhalwa, I would like to confirm a doctor consultation.\nRef: ${bookingRef}\nType: ${formData.bookingType}\nDoctor: ${formData.doctor}\nPatient: ${formData.patientName} (${formData.age} yrs)\nAyushman Card: ${formData.ayushmanCard}\nDate: ${formData.date} at ${formData.time}\nPhone: ${formData.phone}`
   );
 
   return (
@@ -39,7 +56,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/20 text-xs font-black backdrop-blur-xs">
               <HeartPulse className="w-3.5 h-3.5 fill-white" /> PRIYA HOSPITAL JHALWA
             </div>
-            <h3 className="text-xl sm:text-2xl font-black">Book OPD / Emergency Entry</h3>
+            <h3 className="text-xl sm:text-2xl font-black">Book Doctor Consultation / Entry</h3>
           </div>
           <button
             onClick={onClose}
@@ -67,7 +84,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
                       : 'bg-slate-950 text-slate-400 border-slate-800'
                   }`}
                 >
-                  🩺 Routine OPD Visit
+                  🩺 Doctor OPD Consultation
                 </button>
                 <button
                   type="button"
@@ -83,23 +100,36 @@ export default function AppointmentModal({ isOpen, onClose }) {
               </div>
             </div>
 
-            {/* Department */}
+            {/* Doctor Selection */}
             <div className="space-y-1.5">
               <label className="block text-xs font-extrabold text-sky-400 uppercase tracking-wider">
-                Select Medical Department
+                Select Specialist Doctor
               </label>
               <select
-                value={formData.department}
-                onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                className="w-full p-3 rounded-xl border border-slate-700 bg-slate-950 font-bold text-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                value={formData.doctor}
+                onChange={(e) => setFormData({ ...formData, doctor: e.target.value })}
+                className="w-full p-3 rounded-xl border border-slate-700 bg-slate-950 font-bold text-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
               >
-                <option value="24/7 Emergency & Critical Care ICU">🚨 24/7 Emergency, Trauma & ICU Unit</option>
-                <option value="General & Laparoscopic Surgery">🔪 General & Laparoscopic Surgery</option>
-                <option value="Obstetrics & Gynecology">🌸 Obstetrics, Maternity & Gynecology</option>
-                <option value="General Medicine & Fever OPD">🩺 General Medicine & Diabetes Care</option>
-                <option value="Orthopedics & Fracture Care">🦴 Orthopedics & Joint Care</option>
-                <option value="Pediatrics & Child Care">👶 Pediatrics & Child OPD</option>
-                <option value="Urology, Nephrology & Gastro">🧪 Urology, Nephrology & Gastro</option>
+                {doctorList.map((doc, idx) => (
+                  <option key={idx} value={`${doc.name} - ${doc.spec}`}>
+                    {doc.name} • {doc.spec}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Ayushman Card Option */}
+            <div className="space-y-1.5">
+              <label className="block text-xs font-extrabold text-emerald-400 uppercase tracking-wider">
+                Do you have an Ayushman Bharat (PMJAY) or SACHIS Card?
+              </label>
+              <select
+                value={formData.ayushmanCard}
+                onChange={(e) => setFormData({ ...formData, ayushmanCard: e.target.value })}
+                className="w-full p-3 rounded-xl border border-slate-700 bg-slate-950 font-semibold text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              >
+                <option value="Yes - Ayushman Bharat (PMJAY)">Yes - I have Ayushman Card (PMJAY / SACHIS)</option>
+                <option value="No - Cash / Private Insurance">No - Regular Consultation / Insurance</option>
               </select>
             </div>
 
@@ -128,11 +158,11 @@ export default function AppointmentModal({ isOpen, onClose }) {
                   onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                   className="w-full p-3 rounded-xl border border-slate-700 bg-slate-950 font-semibold text-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
                 >
-                  <option value="Immediate 24/7 Emergency Slot">🚨 Immediate 24/7 Emergency Entry</option>
-                  <option value="10:30 AM (Morning OPD)">Morning OPD: 10:30 AM</option>
-                  <option value="12:00 PM (Morning OPD)">Morning OPD: 12:00 PM</option>
-                  <option value="05:30 PM (Evening OPD)">Evening OPD: 05:30 PM</option>
-                  <option value="07:00 PM (Evening OPD)">Evening OPD: 07:00 PM</option>
+                  <option value="11:00 AM (Morning OPD)">Morning OPD: 11:00 AM</option>
+                  <option value="01:00 PM (Afternoon OPD)">Afternoon OPD: 01:00 PM</option>
+                  <option value="04:00 PM (Evening OPD)">Evening OPD: 04:00 PM</option>
+                  <option value="07:30 PM (Night OPD)">Night OPD: 07:30 PM</option>
+                  <option value="24/7 Immediate Emergency Entry">🚨 24/7 Emergency Entry</option>
                 </select>
               </div>
             </div>
@@ -146,7 +176,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Dwijendra Kumar Singh"
+                  placeholder="e.g. Monika Mishra"
                   value={formData.patientName}
                   onChange={(e) => setFormData({ ...formData, patientName: e.target.value })}
                   className="w-full p-3 rounded-xl border border-slate-700 bg-slate-950 font-medium text-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
@@ -159,7 +189,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
                 <input
                   type="number"
                   required
-                  placeholder="e.g. 42"
+                  placeholder="e.g. 38"
                   value={formData.age}
                   onChange={(e) => setFormData({ ...formData, age: e.target.value })}
                   className="w-full p-3 rounded-xl border border-slate-700 bg-slate-950 font-medium text-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
@@ -170,7 +200,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
             {/* Phone */}
             <div className="space-y-1.5">
               <label className="block text-xs font-extrabold text-sky-400 uppercase tracking-wider">
-                Mobile Number
+                Mobile Phone Number
               </label>
               <input
                 type="tel"
@@ -182,25 +212,11 @@ export default function AppointmentModal({ isOpen, onClose }) {
               />
             </div>
 
-            {/* Symptoms */}
-            <div className="space-y-1.5">
-              <label className="block text-xs font-extrabold text-sky-400 uppercase tracking-wider">
-                Chief Medical Symptoms (Optional)
-              </label>
-              <textarea
-                rows={2}
-                placeholder="e.g. Fever, acute abdominal pain, accident injury, maternity OPD..."
-                value={formData.symptoms}
-                onChange={(e) => setFormData({ ...formData, symptoms: e.target.value })}
-                className="w-full p-3 rounded-xl border border-slate-700 bg-slate-950 font-medium text-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
-              />
-            </div>
-
             <button
               type="submit"
               className="w-full py-4 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-black text-base shadow-xl shadow-sky-500/30 transition-all cursor-pointer"
             >
-              Confirm Hospital Reservation
+              Confirm Consultation Slot
             </button>
           </form>
         ) : (
@@ -213,9 +229,9 @@ export default function AppointmentModal({ isOpen, onClose }) {
               <span className="px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-extrabold border border-sky-500/40">
                 Booking Reference: {bookingRef}
               </span>
-              <h4 className="text-2xl font-black text-white">Hospital Registration Confirmed!</h4>
+              <h4 className="text-2xl font-black text-white">Consultation Reserved!</h4>
               <p className="text-slate-300 text-sm font-medium">
-                Your entry is registered for <strong>{formData.patientName}</strong> ({formData.bookingType}).
+                Appointment reserved for <strong>{formData.patientName}</strong> ({formData.bookingType}).
               </p>
             </div>
 
@@ -225,16 +241,16 @@ export default function AppointmentModal({ isOpen, onClose }) {
                 <span className="font-bold text-sky-400">Priya Hospital (Jhalwa, Prayagraj)</span>
               </div>
               <div className="flex justify-between border-b border-slate-800 pb-1.5">
-                <span className="text-slate-400">Department:</span>
-                <span className="font-bold text-white">{formData.department}</span>
+                <span className="text-slate-400">Doctor:</span>
+                <span className="font-bold text-white">{formData.doctor}</span>
+              </div>
+              <div className="flex justify-between border-b border-slate-800 pb-1.5">
+                <span className="text-slate-400">Ayushman Card:</span>
+                <span className="font-bold text-emerald-400">{formData.ayushmanCard}</span>
               </div>
               <div className="flex justify-between border-b border-slate-800 pb-1.5">
                 <span className="text-slate-400">Date & Slot:</span>
                 <span className="font-bold text-white">{formData.date} at {formData.time}</span>
-              </div>
-              <div className="flex justify-between border-b border-slate-800 pb-1.5">
-                <span className="text-slate-400">Location:</span>
-                <span className="font-bold text-white">Gungroo Chauraha, opp. Indian Oil, Jhalwa</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400">24/7 Helpline:</span>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Departments from './components/Departments';
+import DoctorRoster from './components/DoctorRoster';
 import TrustPillars from './components/TrustPillars';
 import TriageAssistant from './components/TriageAssistant';
 import Reviews from './components/Reviews';
@@ -22,6 +23,7 @@ export default function App() {
       <main>
         <Hero onOpenBooking={openBooking} />
         <Departments onOpenBooking={openBooking} />
+        <DoctorRoster onOpenBooking={openBooking} />
         <TrustPillars />
         <TriageAssistant onOpenBooking={openBooking} />
         <Reviews />

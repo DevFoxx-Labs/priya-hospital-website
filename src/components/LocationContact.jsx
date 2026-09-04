@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Clock, Navigation, Compass, Siren, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Clock, Navigation, Compass, Siren, ExternalLink, Mail, ShieldCheck, Activity } from 'lucide-react';
 
 export default function LocationContact({ onOpenBooking }) {
   return (
@@ -12,7 +12,7 @@ export default function LocationContact({ onOpenBooking }) {
             Jhalwa Prayagraj Location
           </div>
           <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-            Hospital Address, Emergency Hotline & Directions
+            Hospital Address, Emergency Helpline & Contact
           </h2>
           <p className="text-base sm:text-lg text-slate-400">
             Situated at Gungroo Chauraha, opposite Indian Oil, Kabir Nagar, Devprayagam Colony, Jhalwa, Prayagraj.
@@ -39,12 +39,18 @@ export default function LocationContact({ onOpenBooking }) {
 
               <div className="space-y-3 text-sm text-slate-300 font-medium leading-relaxed">
                 <p className="font-extrabold text-white text-base">PRIYA HOSPITAL (प्रिया हॉस्पिटल)</p>
+                <p className="text-amber-400 font-bold italic">"स्वास्थ्य आपका साथ हमारा"</p>
                 <p>
                   Gungroo Chauraha, opp. Indian Oil,<br />
                   Kabir Nagar, Devprayagam Colony,<br />
                   Jhalwa, Prayagraj, Dadanpur, Uttar Pradesh 211012<br />
                   <span className="text-slate-400 text-xs font-bold">(Plus Code: CQP8+76 Prayagraj)</span>
                 </p>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 font-bold flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Ayushman Bharat (PMJAY) & SACHIS Card Cashless Treatment Available</span>
               </div>
 
               <div className="pt-2 flex flex-col gap-3">
@@ -77,10 +83,16 @@ export default function LocationContact({ onOpenBooking }) {
                     +91 80098 03730
                   </a>
                   <div className="text-xs text-slate-400 font-semibold mt-1 space-y-0.5">
-                    <div>Alt Emergency: +91 79916 42222</div>
-                    <div>Alt Emergency: +91 79917 42222</div>
+                    <div>Alt Helpline: +91 79916 42222</div>
+                    <div>Alt Helpline: +91 79917 42222</div>
                   </div>
                 </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-center gap-3 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                <span>Official Email: <a href="mailto:priyahospital1@gmail.com" className="font-bold text-sky-400 hover:underline">priyahospital1@gmail.com</a></span>
               </div>
 
               {/* Hours */}
@@ -89,13 +101,13 @@ export default function LocationContact({ onOpenBooking }) {
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Hospital Availability</h4>
+                  <h4 className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Hospital Operational Status</h4>
                   <div className="text-base font-black text-white mt-0.5">
                     Open 24 Hours (365 Days a Year)
                   </div>
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold mt-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    24/7 ICU & Casualty Operational
+                    24/7 ICU, Ultrasound & Emergency Operational
                   </div>
                 </div>
               </div>
